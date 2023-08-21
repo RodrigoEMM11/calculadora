@@ -6,16 +6,19 @@ root = Tk()
 root.title("Calculadora")
 root.geometry("+500+80")
 
-mainframe = ttk.Frame(root)
+estilos = ttk.Style()
+estilos.configure('mainframe.TFrame', background="#DBDBDB")
+
+mainframe = ttk.Frame(root, style="mainframe.TFrame")
 mainframe.grid(column=0, row=0)
 
 entrada1 = StringVar()
 label_entrada1 = ttk.Label(mainframe, textvariable=entrada1)
-label_entrada1.grid(column=0, row=0)
+label_entrada1.grid(column=0, row=0, columnspan=4, sticky=(W, E))
 
 entrada2 = StringVar()
 label_entrada2 = ttk.Label(mainframe, textvariable=entrada2)
-label_entrada2.grid(column=0, row=1)
+label_entrada2.grid(column=0, row=1, columnspan=4, sticky=(W, E))
 
 button0 = ttk.Button(mainframe, text="0")
 button1 = ttk.Button(mainframe, text="1")
