@@ -2,6 +2,10 @@ from tkinter import *
 from tkinter import ttk
 import math
 
+def ingresarValores(tecla):
+    if tecla >= 0 and tecla <= 9 or tecla == '(' or tecla == ')' or tecla == '.':
+        entrada2.set(entrada2.get() + tecla)
+
 def TemaOscuro(*args):
     estilos.configure('mainframe.TFrame', background="#010924")
     
@@ -86,22 +90,22 @@ estilos_botones_restantes = ttk.Style()
 estilos_botones_restantes.configure('Botones_restantes.TButton', font="arial 22", width=5, background="#CECECE", relief="flat")
 estilos_botones_restantes.map('Botones_restantes.TButton', background=[('active', '#858585')])
 
-button0 = ttk.Button(mainframe, text="0", style="Botones_numeros.TButton")
-button1 = ttk.Button(mainframe, text="1", style="Botones_numeros.TButton")
-button2 = ttk.Button(mainframe, text="2", style="Botones_numeros.TButton")
-button3 = ttk.Button(mainframe, text="3", style="Botones_numeros.TButton")
-button4 = ttk.Button(mainframe, text="4", style="Botones_numeros.TButton")
-button5 = ttk.Button(mainframe, text="5", style="Botones_numeros.TButton")
-button6 = ttk.Button(mainframe, text="6", style="Botones_numeros.TButton")
-button7 = ttk.Button(mainframe, text="7", style="Botones_numeros.TButton")
-button8 = ttk.Button(mainframe, text="8", style="Botones_numeros.TButton")
-button9 = ttk.Button(mainframe, text="9", style="Botones_numeros.TButton")
+button0 = ttk.Button(mainframe, text="0", style="Botones_numeros.TButton", command=lambda: ingresarValores(0))
+button1 = ttk.Button(mainframe, text="1", style="Botones_numeros.TButton", command=lambda: ingresarValores(1))
+button2 = ttk.Button(mainframe, text="2", style="Botones_numeros.TButton", command=lambda: ingresarValores(2))
+button3 = ttk.Button(mainframe, text="3", style="Botones_numeros.TButton", command=lambda: ingresarValores(3))
+button4 = ttk.Button(mainframe, text="4", style="Botones_numeros.TButton", command=lambda: ingresarValores(4))
+button5 = ttk.Button(mainframe, text="5", style="Botones_numeros.TButton", command=lambda: ingresarValores(5))
+button6 = ttk.Button(mainframe, text="6", style="Botones_numeros.TButton", command=lambda: ingresarValores(6))
+button7 = ttk.Button(mainframe, text="7", style="Botones_numeros.TButton", command=lambda: ingresarValores(7))
+button8 = ttk.Button(mainframe, text="8", style="Botones_numeros.TButton", command=lambda: ingresarValores(8))
+button9 = ttk.Button(mainframe, text="9", style="Botones_numeros.TButton", command=lambda: ingresarValores(9))
 
 button_borrar = ttk.Button(mainframe, text=chr(9003), style="Botones_borrar.TButton")
 button_borrar_todo = ttk.Button(mainframe, text="C", style="Botones_borrar.TButton")
-button_parentesis1 = ttk.Button(mainframe, text="(", style="Botones_restantes.TButton")
-button_parentesis2 = ttk.Button(mainframe, text=")", style="Botones_restantes.TButton")
-button_punto = ttk.Button(mainframe, text=".", style="Botones_restantes.TButton")
+button_parentesis1 = ttk.Button(mainframe, text="(", style="Botones_restantes.TButton", command=lambda: ingresarValores('('))
+button_parentesis2 = ttk.Button(mainframe, text=")", style="Botones_restantes.TButton", command=lambda: ingresarValores(')'))
+button_punto = ttk.Button(mainframe, text=".", style="Botones_restantes.TButton", command=lambda: ingresarValores('.'))
 
 button_division = ttk.Button(mainframe, text=chr(247), style="Botones_restantes.TButton")
 button_multiplicacion = ttk.Button(mainframe, text="x", style="Botones_restantes.TButton")
