@@ -48,23 +48,49 @@ def ingresarValores(tecla):
 
         entrada2.set('')
 
-    if tecla == '=':
+    if tecla == '=' or tecla == 'enter':
         entrada1.set(entrada1.get() + entrada2.get())
         resultado = eval(entrada1.get())
         entrada2.set(resultado)
 
+def enter(*args):
+    ingresarValores('enter')
+
+def ingresarValoresTeclado(event):
+    tecla = event.char
+
+    if tecla >= '0' and tecla <= '9' or tecla == '(' or tecla == ')' or tecla == '.':
+        entrada2.set(entrada2.get() + tecla)
+
+    if tecla == '*' or tecla == '/' or tecla == '+' or tecla == '-':
+        if tecla == '*':
+            entrada1.set(entrada2.get() + '*')
+        elif tecla == '/':
+            entrada1.set(entrada2.get() + '/')
+        elif tecla == '+':
+            entrada1.set(entrada2.get() + '+')
+        elif tecla == '-':
+            entrada1.set(entrada2.get() + '-')
+
+        entrada2.set('')
+
+    if tecla == '=':
+        entrada1.set(entrada1.get() + entrada2.get())
+        resultado = eval(entrada1.get())
+        entrada2.set(resultado)       
+        
 def raizCuadrada():
     entrada1.set('')
     resultado = math.sqrt(float(entrada2.get()))
     entrada2.set(resultado)
 
-def borrar():
+def borrar(*args):
     inicio = 0
     final = len(entrada2.get())
     
     entrada2.set(entrada2.get()[inicio:final-1])
 
-def borrarTodo():
+def borrarTodo(*args):
     entrada1.set('');
     entrada2.set('');
 
@@ -178,6 +204,10 @@ for child in mainframe.winfo_children():
     child.grid_configure(ipady=10, padx=1, pady=1)
 
 root.bind('<KeyPress-o>', TemaOscuro)
-root.bind('<KeyPress-c>', TemaClaro)    
+root.bind('<KeyPress-c>', TemaClaro)  
+root.bind('<Key>', ingresarValoresTeclado)  
+root.bind('<KeyPress-b>', borrar)
+root.bind('<KeyPress-q>', borrarTodo)
+root.bind('<Return>', enter)
  
 root.mainloop()
