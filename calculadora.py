@@ -53,6 +53,21 @@ def ingresarValores(tecla):
         resultado = eval(entrada1.get())
         entrada2.set(resultado)
 
+def raizCuadrada():
+    entrada1.set('')
+    resultado = math.sqrt(float(entrada2.get()))
+    entrada2.set(resultado)
+
+def borrar():
+    inicio = 0
+    final = len(entrada2.get())
+    
+    entrada2.set(entrada2.get()[inicio:final-1])
+
+def borrarTodo():
+    entrada1.set('');
+    entrada2.set('');
+
 root = Tk()
 root.title("Calculadora")
 root.geometry("+500+80")
@@ -117,8 +132,8 @@ button7 = ttk.Button(mainframe, text="7", style="Botones_numeros.TButton", comma
 button8 = ttk.Button(mainframe, text="8", style="Botones_numeros.TButton", command=lambda: ingresarValores('8'))
 button9 = ttk.Button(mainframe, text="9", style="Botones_numeros.TButton", command=lambda: ingresarValores('9'))
 
-button_borrar = ttk.Button(mainframe, text=chr(9003), style="Botones_borrar.TButton")
-button_borrar_todo = ttk.Button(mainframe, text="C", style="Botones_borrar.TButton")
+button_borrar = ttk.Button(mainframe, text=chr(9003), style="Botones_borrar.TButton", command=lambda: borrar())
+button_borrar_todo = ttk.Button(mainframe, text="C", style="Botones_borrar.TButton", command=lambda: borrarTodo())
 button_parentesis1 = ttk.Button(mainframe, text="(", style="Botones_restantes.TButton", command=lambda: ingresarValores('('))
 button_parentesis2 = ttk.Button(mainframe, text=")", style="Botones_restantes.TButton", command=lambda: ingresarValores(')'))
 button_punto = ttk.Button(mainframe, text=".", style="Botones_restantes.TButton", command=lambda: ingresarValores('.'))
@@ -129,7 +144,7 @@ button_resta = ttk.Button(mainframe, text="-", style="Botones_restantes.TButton"
 button_suma = ttk.Button(mainframe, text="+", style="Botones_restantes.TButton", command=lambda: ingresarValores('+'))
 
 button_igual = ttk.Button(mainframe, text="=", style="Botones_restantes.TButton", command=lambda: ingresarValores('='))
-button_raiz = ttk.Button(mainframe, text="√", style="Botones_restantes.TButton")
+button_raiz = ttk.Button(mainframe, text="√", style="Botones_restantes.TButton", command=lambda: raizCuadrada())
 
 #colocar botones en pantalla
 button_parentesis1.grid(column=0, row=2, sticky=(W, N, E, S))
